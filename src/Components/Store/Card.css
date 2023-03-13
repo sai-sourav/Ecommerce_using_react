@@ -1,0 +1,10 @@
+.mt-4 {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.card_body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

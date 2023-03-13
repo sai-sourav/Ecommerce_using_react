@@ -1,0 +1,8 @@
+.products_div{
+    max-width:900px;
+    padding:20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 20rem;
+}
