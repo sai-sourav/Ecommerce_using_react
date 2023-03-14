@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
+import Cartcontext from "../../Context/cart-context";
 import "./Header.css"
 
 const Navigationbar = (props) => {
+  const cartctx = useContext(Cartcontext);
   const handleSelect = (eventKey) => {
     props.Page(eventKey);
   };
@@ -21,7 +23,7 @@ const Navigationbar = (props) => {
             <Nav.Link eventKey="store">Store</Nav.Link>
             <Nav.Link eventKey="about">About</Nav.Link>
           </Nav>
-          <Button variant="primary">Cart</Button>
+          <Button variant="primary" onClick={() => cartctx.updateShowcart(prev => !prev)}>Cart</Button>
         </Container>
       </Navbar>
       <div className="header">
