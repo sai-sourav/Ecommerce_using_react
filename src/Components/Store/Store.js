@@ -32,10 +32,15 @@ export default function Store() {
   ];
 
   return (
+    <>
+    <div className="header">
+        <h1 style={{ fontSize: "6rem" }}>The Generics</h1>
+    </div>
     <div className="products_div">
       {productsArr.map((product, index) => {
         return <Card product={product}></Card>;
       })}
     </div>
+    </>
   );
 }

@@ -1,9 +1,16 @@
 import React from "react";
 import { Container, Button, Table } from "react-bootstrap";
 
+import "./Home.css";
+
 export default function Home() {
   return (
     <>
+      <div className="header">
+        <h1 style={{ fontSize: "6rem" }}>The Generics</h1>
+        <button className="latest-album">Get our Latest Album</button>
+        <button className="play-btn">►</button>
+      </div>
       <Container>
         <h2>TOURS</h2>
         <Table responsive>
@@ -17,10 +24,10 @@ export default function Home() {
               </td>
             </tr>
             <tr>
-              <td className="text-center" >JUL 22</td>
-              <td className="text-center" >TORONTO,ON</td>
-              <td className="text-center" >BUDWEISER STAGE</td>
-              <td className="text-center" >
+              <td className="text-center">JUL 22</td>
+              <td className="text-center">TORONTO,ON</td>
+              <td className="text-center">BUDWEISER STAGE</td>
+              <td className="text-center">
                 <Button variant="primary">BUY TICKETS</Button>
               </td>
             </tr>
