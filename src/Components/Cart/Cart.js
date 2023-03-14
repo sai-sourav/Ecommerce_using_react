@@ -1,9 +1,14 @@
 import React, { useContext } from "react";
-import { Button, Image, Modal, Table } from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 import Cartcontext from "../../Context/cart-context";
 import "./Cart.css";
+import CartItem from "./CartItem";
 export default function Cart(props) {
   const Cartctx = useContext(Cartcontext);
+  let totalPrice = 0
+  if(Cartctx.cartItems.length > 0){
+    totalPrice = Cartctx.cartItems.map(item => item.price * item.quantity).reduce((tot,curr) => tot + curr);
+  }
   return (
     <Modal
       {...props}
@@ -15,7 +20,8 @@ export default function Cart(props) {
         <Modal.Title id="contained-modal-title-vcenter">Cart</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Table>
+        {Cartctx.cartItems.length === 0 && <h2 className="align-middle text-center">No items to Show</h2>}
+        {Cartctx.cartItems.length !== 0 && <><Table>
           <thead>
             <tr>
               <th className="text-center">Image</th>
@@ -28,22 +34,15 @@ export default function Cart(props) {
           <tbody>
             {Cartctx.cartItems.map((item) => {
               return (
-                <tr>
-                  <td className="text-center"><Image fluid src={item.imageUrl} width="70"></Image></td>
-                  <td className="align-middle text-center">{item.title}</td>
-                  <td className="align-middle text-center">{item.price}</td>
-                  <td className="align-middle text-center">{item.quantity}</td>
-                  <td className="align-middle text-center">
-                    <Button variant="danger">Remove</Button>
-                  </td>
-                </tr>
+                <CartItem item={item} />
               );
             })}
           </tbody>
         </Table>
+        <div className="totalamount"><h4>Total Amount: $ {totalPrice}</h4></div></>}
       </Modal.Body>
       <Modal.Footer>
-        <Button>Order now</Button>
+        <Button disabled={Cartctx.cartItems.length === 0}>Order now</Button>
       </Modal.Footer>
     </Modal>
   );

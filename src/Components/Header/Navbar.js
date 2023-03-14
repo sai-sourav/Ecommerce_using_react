@@ -9,6 +9,10 @@ const Navigationbar = (props) => {
   const handleSelect = (eventKey) => {
     props.Page(eventKey);
   };
+  let cartQuantity = 0
+  if(cartctx.cartItems.length > 0){ 
+  cartQuantity = cartctx.cartItems.map(item => item.quantity).reduce((tot,curr) => tot + curr );
+  }
   return (
     <>
       <Navbar sticky="top" bg="dark" expand="lg" variant="dark">
@@ -23,7 +27,7 @@ const Navigationbar = (props) => {
             <Nav.Link eventKey="store">Store</Nav.Link>
             <Nav.Link eventKey="about">About</Nav.Link>
           </Nav>
-          <Button variant="primary" onClick={() => cartctx.updateShowcart(prev => !prev)}>Cart</Button>
+          <Button variant="primary" onClick={() => cartctx.updateShowcart(prev => !prev)}>Cart ({cartQuantity})</Button>
         </Container>
       </Navbar>
       <div className="header">

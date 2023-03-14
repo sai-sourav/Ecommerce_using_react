@@ -35,7 +35,23 @@ export const CartcontextProvider = (props) => {
   ]);
 
   const updateCartItems = (newitem) => {
-    ChangeCartItems(newitem);
+    ChangeCartItems((prevState) => {
+      const find = prevState.findIndex((product) => product.title === newitem.title)
+      if(find >= 0 && newitem.quantity === -1){
+        prevState[find].quantity -= 1
+        if(prevState[find].quantity === 0){
+          prevState.splice(find,1)
+        }
+        return [...prevState]
+      } 
+      else if(find >= 0){
+        prevState[find].quantity += 1
+        return [...prevState]
+      }else{
+        newitem["quantity"] = 1
+        return [...prevState, newitem]
+      }
+    });
   };
 
   const updateShowcart = () => {

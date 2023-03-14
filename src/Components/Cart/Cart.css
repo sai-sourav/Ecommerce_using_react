@@ -1,4 +1,5 @@
-.cart-item {
-    justify-content: center;
+.totalamount {
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
 }
