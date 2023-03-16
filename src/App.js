@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import "./App.css";
 import About from "./Components/About/About";
 import Cart from "./Components/Cart/Cart";
 import Root from "./Components/Root/Root";
@@ -8,6 +7,7 @@ import Store from "./Components/Store/Store";
 import Cartcontext from "./Context/cart-context";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Contactus from "./Components/ContactUs/Contactus";
 
 const Router = createBrowserRouter([
   {path: "/",
@@ -15,7 +15,8 @@ const Router = createBrowserRouter([
    children: [
     {path: "/", element: <Home />},
     {path: "/about", element: <About />},
-    {path: "/store", element: <Store />}
+    {path: "/store", element: <Store />},
+    {path: "/contactus", element: <Contactus />}
    ]
   }
 ]);

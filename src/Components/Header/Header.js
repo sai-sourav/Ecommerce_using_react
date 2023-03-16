@@ -30,6 +30,9 @@ const Navigationbar = (props) => {
             <Nav.Link as={NavLink} eventKey="about" to="/about">
               About
             </Nav.Link>
+            <Nav.Link as={NavLink} eventKey="contactus" to="/contactus">
+              ContactUs
+            </Nav.Link>
           </Nav>
           <Button
             variant="primary"

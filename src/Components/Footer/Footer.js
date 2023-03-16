@@ -9,7 +9,7 @@ import youtubeLogo from "../../images/about/youtube.jpg";
 
 export default function Footer() {
   return (
-    <Navbar bg="dark" expand="sm">
+    <Navbar sticky="bottom" bg="dark" expand="sm">
       <Container>
         <h2 className="footer-title">The Generics</h2>
         <div className="footer-icons">
