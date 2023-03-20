@@ -14,7 +14,7 @@ export default function CartItem(props) {
     }
 
   return (
-    <tr>
+    <tr key={Math.random().toString()}>
       <td className="text-center">
         <Image fluid src={item.imageUrl} width="70"></Image>
       </td>

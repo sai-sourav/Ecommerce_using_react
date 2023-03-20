@@ -1,0 +1,11 @@
+.contactdiv {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 5px 2px #1c1010;
+    width: 45vh;
+    margin: auto;
+    margin-top: 5vh;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+}
