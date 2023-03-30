@@ -1,0 +1,13 @@
+.active {
+    /* background-color: #ddd; */
+    color: rgb(186, 142, 142)
+}
+
+.navlink:link {
+    text-decoration: none
+}
+
+.navlink:hover {
+    color: rgb(186, 142, 142)
+}
+
