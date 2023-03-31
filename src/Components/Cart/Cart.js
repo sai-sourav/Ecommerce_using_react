@@ -3,6 +3,7 @@ import { Button, Modal, Table } from "react-bootstrap";
 import Cartcontext from "../../Context/cart-context";
 import "./Cart.css";
 import CartItem from "./CartItem";
+
 export default function Cart(props) {
   const Cartctx = useContext(Cartcontext);
   let totalPrice = 0
@@ -21,7 +22,8 @@ export default function Cart(props) {
       </Modal.Header>
       <Modal.Body>
         {Cartctx.cartItems.length === 0 && <h2 className="align-middle text-center">No items to Show</h2>}
-        {Cartctx.cartItems.length !== 0 && <><Table>
+        {Cartctx.cartItems.length !== 0 && <>
+        <Table>
           <thead>
             <tr>
               <th className="text-center">Image</th>

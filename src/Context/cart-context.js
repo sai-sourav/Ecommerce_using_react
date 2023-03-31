@@ -1,61 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FindorCreateCart } from "../crudcrudapi";
+import userContext from "./user-context";
 const { useState } = require("react");
 
 const Cartcontext = React.createContext({
   showCart : "",
   updateShowcart : () => {},
   cartItems: [],
-  updateCartItems: (newItem) => {},
+  updateCartItems: () => {},
 });
 
 export const CartcontextProvider = (props) => {
+  const userctx = useContext(userContext);
   const [showCart, changeShowcart] = useState(false);
   const [cartItems, ChangeCartItems] = useState([
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
+    // {
+    //   title: "Colors",
+    //   price: 100,
+    //   imageUrl:
+    //     "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    //   quantity: 2,
+    // },
+    // {
+    //   title: "Black and white Colors",
+    //   price: 50,
+    //   imageUrl:
+    //     "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    //   quantity: 3,
+    // },
+    // {
+    //   title: "Yellow and Black Colors",
+    //   price: 70,
+    //   imageUrl:
+    //     "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    //   quantity: 1,
+    // },
   ]);
 
-  const updateCartItems = (newitem) => {
-    ChangeCartItems((prevState) => {
-      const find = prevState.findIndex((product) => product.title === newitem.title)
-      if(find >= 0 && newitem.quantity === -1){
-        prevState[find].quantity -= 1
-        if(prevState[find].quantity === 0){
-          prevState.splice(find,1)
-        }
-        return [...prevState]
-      } 
-      else if(find >= 0){
-        prevState[find].quantity += 1
-        return [...prevState]
-      }else{
-        newitem["quantity"] = 1
-        return [...prevState, newitem]
-      }
-    });
+  const updateCartItems = async () => {
+    const cart = await FindorCreateCart(userctx.email);
+    ChangeCartItems(cart.items);
   };
 
-  const updateShowcart = () => {
-    changeShowcart((prevState) => !prevState)
+  const updateShowcart = async (bool) => {
+    const cart = await FindorCreateCart(userctx.email);
+    ChangeCartItems(cart.items);
+    if(bool === false){
+      changeShowcart(false);
+    }else{
+      changeShowcart((prevState) => !prevState);
+    }
   }
 
   const values = {

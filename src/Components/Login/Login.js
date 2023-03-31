@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useRef, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
+import Cartcontext from "../../Context/cart-context";
 import userContext from "../../Context/user-context";
 
 import classes from "./Login.module.css";
@@ -12,6 +13,7 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsloading] = useState(false);
   const userctx = useContext(userContext);
+  const cartctx = useContext(Cartcontext)
   const navigate = useNavigate();
 
   const emailref = useRef();
@@ -38,6 +40,7 @@ const AuthForm = () => {
             returnSecureToken: true,
           }
         );
+        userctx.setEmail(enteredemail);
         e.target.reset();
         localStorage.setItem('token', response.data.idToken);
         navigate('/store', { replace: true });
@@ -45,6 +48,8 @@ const AuthForm = () => {
         loggedintimer = setTimeout(() => {
           userctx.setIsloggedIn(false);
           localStorage.removeItem('token');
+          userctx.setEmail(null);
+          cartctx.updateShowcart(false);
         }, 300000)
       } catch (err) {
           // console.log(err);

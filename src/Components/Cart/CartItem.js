@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import { Button, Image } from "react-bootstrap";
 import Cartcontext from "../../Context/cart-context";
+import userContext from "../../Context/user-context";
+import { removeCartItem } from "../../crudcrudapi";
 
 export default function CartItem(props) {
-    const cartctx = useContext(Cartcontext)
+    const cartctx = useContext(Cartcontext);
+    const userctx = useContext(userContext);
     const { item } = props;
-    const removeFromCart = () => {
+    const removeFromCart = async () => {
         const newItem = {
             title : item.title,
             quantity : -1
         }
-        cartctx.updateCartItems(newItem);
+        const { status } = await removeCartItem(userctx.email,newItem);
+        cartctx.updateCartItems();
+        console.log(status);
     }
 
   return (

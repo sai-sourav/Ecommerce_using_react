@@ -20,7 +20,6 @@ const App = () => {
     <>
       <Navigationbar />
       <Routes>
-        {console.log(userctx.isloggedIn)}
         {!userctx.isloggedIn && <Route path="/Login" element={<AuthForm />} />}
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
