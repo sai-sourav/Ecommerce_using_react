@@ -29,21 +29,6 @@ const Navigationbar = (props) => {
             {userctx.isloggedIn && <NavLink exact to="/store" activeClassName="active" className="navlink">Store</NavLink>}
             <NavLink exact to="/about" activeClassName="active" className="navlink">About</NavLink>
             <NavLink exact to="/contactus" activeClassName="active" className="navlink">Contact Us</NavLink>
-            {/* <Nav.Link as={NavLink} exact eventKey="Login" to="/login">
-              Login
-            </Nav.Link>
-            <Nav.Link as={NavLink} eventKey="home" to="/home">
-              Home
-            </Nav.Link>
-            <Nav.Link as={NavLink} exact eventKey="store" to="/store">
-              Store
-            </Nav.Link>
-            <Nav.Link as={NavLink} eventKey="about" to="/about">
-              About
-            </Nav.Link>
-            <Nav.Link as={NavLink} eventKey="contactus" to="/contactus">
-              ContactUs
-            </Nav.Link> */}
           </Nav>
           <Button
             variant="primary"

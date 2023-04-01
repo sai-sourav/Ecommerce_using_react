@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "https://crudcrud.com/api/6e6a0d5ae6f046d0b2e80abce68508d4";
+const apiUrl = "https://crudcrud.com/api/2e49284dca2940baac210679420e057f";
 
 async function getCarts() {
     try {
